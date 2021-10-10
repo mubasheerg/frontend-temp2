@@ -1,0 +1,204 @@
+<body>
+    <div class="registration-form">
+      <h3 align="center" style="color: black; font-size: x-large">Signup Form</h3>
+      <form
+        novalidate
+        style="margin-left: 430px; width: 450px"
+        [formGroup]="signUpForm"
+        (ngSubmit)="customerSignUp()"
+      >
+        <fieldset>
+          <div class="form-group">
+            <label>Name</label>
+  
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              placeholder="Enter your name"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('name').hasError('required') &&
+                signUpForm.get('name').dirty
+              "
+            >
+                Name is required
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('name').hasError('minlength') &&
+                signUpForm.get('name').dirty
+              "
+            >
+              Name should be minimum of 3 characters.
+            </div>
+          </div>
+         
+          <div class="form-group">
+            <label>Mail Id </label>
+            <input
+              type="email"
+              placeholder="Enter your MailId"
+              class="form-control"
+              formControlName="custMail"
+              (keyup)="mailCheck(signUpForm.get('custMail').value)"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custMail').hasError('required') &&
+                signUpForm.get('custMail').dirty
+              "
+            >
+              Mail Id is required
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('mailId').hasError('email') &&
+                signUpForm.get('mailId').dirty
+              "
+            >
+              Enter proper Mail Id
+            </div>
+          </div>
+  
+   
+  
+          <div class="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="custPwd"
+              placeholder="Enter your Password"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custPwd').hasError('required') &&
+                signUpForm.get('custPwd').dirty
+              "
+            >
+              Password is required
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custPWd').hasError('minlength') &&
+                signUpForm.get('custPwd').dirty
+              "
+            >
+              Password should be minimum of 6 characters.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="confirmPwd"
+              placeholder="Enter Password again"
+            />
+  
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('confirmPwd').hasError('required') &&
+                signUpForm.get('confirmPwd').dirty
+              "
+            >
+              Confirm Password is required
+            </div>
+            <div
+              *ngIf="
+                signUpForm.get('confirmPwd').hasError('confirmedValidator') &&
+                signUpForm.get('confirmPwd').dirty
+              "
+            >
+              <font color="red"
+                >Password and Confirm Password must be same!.</font
+              >
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Mobile Number </label>
+            <input
+              type="tel"
+              class="form-control"
+              formControlName="custPhone"
+              placeholder="Enter your Mobile Number"
+              (keyup)="phoneCheck(signUpForm.get('custPhone').value)"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custPhone').hasError('required') &&
+                signUpForm.get('custPhone').dirty
+              "
+            >
+              Mobile Number is required
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custPhone').hasError('minlength') &&
+                signUpForm.get('custPhoner').dirty
+              "
+            >
+              Enter proper 10 digit Mobile Number
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custPhone').hasError('maxlength') &&
+                signUpForm.get('custPhone').dirty
+              "
+            >
+              Mobile Number should not exceed 10 digit!
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label>Address </label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="custAddress"
+              placeholder="Enter your Address"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                signUpForm.get('custAddress').hasError('required') &&
+                signUpForm.get('custAddress').dirty
+              "
+            >
+                Address is required
+            </div>
+          </div>
+  
+         
+        </fieldset>
+        <div>
+          <h4>
+            <font color="red" style="font-size: large">{{ errorMessage }}</font>
+          </h4>
+          <br />
+        </div>
+        <br>
+  <td>
+        &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">
+          Create Customer Account
+        </button>
+        &nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-dark" (click)="return()">
+          Back
+        </button>
+        </td>
+      </form>
+    </div>
+  </body>
