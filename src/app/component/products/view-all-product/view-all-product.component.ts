@@ -130,6 +130,6 @@ export class ViewAllProductComponent implements OnInit {
   }  
 
   editProducts(prodId:number){
-    this.router.navigate(['editProducts',this.prodId])
+    this.router.navigate(['edit-products',prodId])
   }
 }

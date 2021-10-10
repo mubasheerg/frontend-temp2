@@ -35,7 +35,7 @@ export class ProductsService {
 
   getProductsById(prodId:number):Observable<Products>
   {
-    return this.http.get<Products>(`${productsURL}/${prodId}`);
+    return this.http.get<Products>(`${productsURL}/getProduct/Id/${prodId}`);
   }
   
   deleteProducts(prodId:number):Observable<Products>
@@ -50,7 +50,7 @@ export class ProductsService {
 
   updateProducts(products:Products):Observable<Products>
   {
-    return this.http.put<Products>(productsURL,products,this.httpOptions);
+    return this.http.put<Products>(`${productsURL}/updateProduct`,products,this.httpOptions);
   }
   
 }

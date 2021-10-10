@@ -12,45 +12,28 @@ import Swal from 'sweetalert2';
 })
 export class EditProductComponent implements OnInit {
   
-  editProductsForm?:FormGroup
+  editProductForm?:FormGroup
   products?:Products;
   errorMessage?:string
   ProductsExists?:string;
   prodId?:number;
   date=new Date();
-
+  public product:Products=new Products();
   constructor(public activatedRoute:ActivatedRoute,public formBuilder:FormBuilder,public productsService:ProductsService,public router:Router) { }
 
   ngOnInit(): void {
     this.prodId=this.activatedRoute.snapshot.params['prodId'];
-    console.log('prodId:',this.prodId)
-
-    this.productsService.getProductsById(this.prodId)
-    .subscribe(data=>{
-      console.log(data)
-      this.editProductsForm=this.formBuilder.group({
-        prodId:[data.prodId,[Validators.required]],
-        prodName:[data.prodName,[Validators.required]],
-        prodPrice:[data.prodPrice,[Validators.required,Validators.min(1)]],
-        category:[data.category,[Validators.required]]
-    })
-  })
+    console.log('prodId:',this.prodId);
+    this.productsService.getProductsById(this.prodId).subscribe(data=>{
+      this.product=data;
+      console.log(this.product);
+    });
 
   }
-
   updateProducts(){
-    this.productsService.updateProducts(this.editProductsForm?.value)
-    .subscribe(
-      response=>{
-        console.log(response);
-        console.log("Updated successfully");
-      },
-      error=>{
-        this.successNotification();
-        this.back();
-        console.log("Error in updation")
-      }
-    );
+      this.productsService.updateProducts(this.product).subscribe(data=>{
+        window.alert(data);
+      });
   }
   back()
   {
