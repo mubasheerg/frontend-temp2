@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Admin } from 'src/app/models/admin';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
@@ -12,20 +13,31 @@ import Swal from 'sweetalert2';
 })
 export class CustomerSignupComponent implements OnInit {
 
-  signUpForm?:FormGroup;
+ /*  signUpForm?:FormGroup;
   errorMessage?:string;
   customer?:Customer;
   custMail?:string;
   mailCustomer?:Customer;
-  phoneCustomer?:Customer;
+  phoneCustomer?:Customer; */
+
 
   constructor(public activatedRoute: ActivatedRoute,public customerService:CustomerService,public formBuilder: FormBuilder,public router: Router) { }
 
+  signUpForm=new FormGroup({
+    name:new FormControl(''),
+    custMail:new FormControl(''),
+    custPwd:new FormControl(''),
+    custPhone:new FormControl(''),
+    custAddress:new FormControl(''),
+    confirmPwd:new FormControl('')
+  });
+
   ngOnInit(): void {
 
+/* 
     this.customer=new Customer();
-
-    this.signUpForm=this.formBuilder.group({
+ */
+    /* this.signUpForm=this.formBuilder.group({
       custId:[-1],
       custName:['',[Validators.required,Validators.minLength(3)]],
       custMail:['',[Validators.required]],
@@ -38,9 +50,9 @@ export class CustomerSignupComponent implements OnInit {
       validator: ConfirmedValidator('custPwd', 'confirmPwd'),
     } 
     );
-  }
+   */}
 
-  mailCheck(custMail: string) {
+  /* mailCheck(custMail: string) {
     this.customerService.getCustomerByMail(custMail).subscribe((data) => {
       this.mailCustomer = data;
       if (this.mailCustomer == null) {
@@ -63,11 +75,26 @@ export class CustomerSignupComponent implements OnInit {
   }
 
   customerSignUp() {
+    console.log(this.signUpForm);
     this.customerService.addCustomer(this.signUpForm?.value).subscribe((response) => {
       this.customer = response;
       this.successNotification();
       this.router.navigate(['login']);
     });
+  } */
+
+  customerSignUp(){
+    const customer:Customer=new Customer();
+    customer.custName=this.signUpForm.get('name').value;
+    customer.custMail=this.signUpForm.get('custMail').value;
+    customer.custPwd=this.signUpForm.get('custPwd').value;
+    customer.custPhone=this.signUpForm.get('custPhone').value;
+    customer.custAddress=this.signUpForm.get('custAddress').value;
+    console.log(customer);
+     this.customerService.addCustomer(customer).subscribe((response)=>{
+        console.log(response); });
+    
+    
   }
 
   return() {

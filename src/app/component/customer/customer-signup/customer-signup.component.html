@@ -1,11 +1,8 @@
 <body>
     <div class="registration-form">
       <h3 align="center" style="color: black; font-size: x-large">Signup Form</h3>
-      <form
-        novalidate
-        style="margin-left: 430px; width: 450px"
-        [formGroup]="signUpForm"
-        (ngSubmit)="customerSignUp()"
+      <form [formGroup]="signUpForm" novalidate style="margin-left: 430px; width: 450px"
+         (ngSubmit)="customerSignUp()"
       >
         <fieldset>
           <div class="form-group">
@@ -44,7 +41,7 @@
               placeholder="Enter your MailId"
               class="form-control"
               formControlName="custMail"
-              (keyup)="mailCheck(signUpForm.get('custMail').value)"
+              
             />
             <div
               class="alert alert-danger"
@@ -57,11 +54,8 @@
             </div>
             <div
               class="alert alert-danger"
-              *ngIf="
-                signUpForm.get('mailId').hasError('email') &&
-                signUpForm.get('mailId').dirty
-              "
-            >
+              *ngIf="signUpForm.get('custMail').hasError('email') &&
+                signUpForm.get('custMail').dirty">
               Enter proper Mail Id
             </div>
           </div>
@@ -85,15 +79,13 @@
             >
               Password is required
             </div>
-            <div
+            <!-- <div
               class="alert alert-danger"
-              *ngIf="
-                signUpForm.get('custPWd').hasError('minlength') &&
-                signUpForm.get('custPwd').dirty
+              *ngIf="signUpForm.get('custPWd').value.errors.minlength && signUpForm.get('custPwd').value.dirty
               "
             >
               Password should be minimum of 6 characters.
-            </div>
+            </div> -->
           </div>
   
           <div class="form-group">
@@ -132,8 +124,8 @@
               class="form-control"
               formControlName="custPhone"
               placeholder="Enter your Mobile Number"
-              (keyup)="phoneCheck(signUpForm.get('custPhone').value)"
-            />
+            
+              />
             <div
               class="alert alert-danger"
               *ngIf="
@@ -186,7 +178,7 @@
         </fieldset>
         <div>
           <h4>
-            <font color="red" style="font-size: large">{{ errorMessage }}</font>
+         
           </h4>
           <br />
         </div>

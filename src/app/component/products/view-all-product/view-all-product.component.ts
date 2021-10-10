@@ -36,6 +36,8 @@ export class ViewAllProductComponent implements OnInit {
   {
     this.productsService.getAllProducts().subscribe(
       (data:any[])=>{
+        this.products=data;
+        console.log(this.products)
         this.show=true;
         console.log("Getting all products");
         if(data==null){

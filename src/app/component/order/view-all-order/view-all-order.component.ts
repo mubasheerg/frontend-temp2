@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Products } from 'src/app/models/products';
 
 @Component({
   selector: 'app-view-all-order',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAllOrderComponent implements OnInit {
 
-  constructor() { }
+  errorMessage?:string;
+  products:Products[]=[];
+  
+
+  constructor(public router:Router) { }
 
   ngOnInit(): void {
   }
+
 
 }

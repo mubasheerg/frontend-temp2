@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Products } from '../models/products';
 
-const productsURL="http://localhost:9001/products"
+const productsURL="http://localhost:9001/product"
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +20,7 @@ export class ProductsService {
 
   getAllProducts():Observable<Products[]>
   {
-    return this.http.get<Products[]>(`${productsURL}`);
+    return this.http.get<Products[]>(`${productsURL}/getAllProducts`);
   }
 
   getProductsByName(prodName:string):Observable<Products>
@@ -40,7 +40,7 @@ export class ProductsService {
   
   deleteProducts(prodId:number):Observable<Products>
   {
-    return this.http.delete(`${productsURL}/${prodId}`);
+    return this.http.delete(`${productsURL}/deleteProduct/${prodId}`);
   }
 
   addProducts(products:Products):Observable<Products>

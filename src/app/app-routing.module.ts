@@ -12,9 +12,9 @@ const routes: Routes = [
   {path:'customerSignUp',component:CustomerSignupComponent},
   {path:'login',component:LoginComponent},
   {path:'adminDashboard',component:AdminDashboardComponent},
-  {path:'addProduct',component:AddProductComponent},
-  {path:'editProduct',component:EditProductComponent},
-  {path:'viewPAllroducts',component:ViewAllProductComponent}
+  {path:'add-products',component:AddProductComponent},
+  {path:'edit-products',component:EditProductComponent},
+  {path:'view-all-products',component:ViewAllProductComponent}
 
 ];
 
