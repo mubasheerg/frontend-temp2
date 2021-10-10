@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'adminDashboard',component:AdminDashboardComponent},
   {path:'addProduct',component:AddProductComponent},
   {path:'editProduct',component:EditProductComponent},
-  {path:'viewProduct',component:ViewAllProductComponent}
+  {path:'viewPAllroducts',component:ViewAllProductComponent}
 
 ];
 

@@ -112,7 +112,7 @@ export class ViewAllProductComponent implements OnInit {
   alertConfirmation(prodId:any){
     Swal.fire({
       title: 'Are you sure?',
-      text: 'This process is irreversible.',
+      text: '',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes',

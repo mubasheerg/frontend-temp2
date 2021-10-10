@@ -60,6 +60,4 @@ export class EditProductComponent implements OnInit {
 successNotification(){
   Swal.fire('Success', 'Product updated successfully', 'success')
 }
-
-
 }
