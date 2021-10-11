@@ -51,6 +51,6 @@ addProducts(){
     Swal.fire('Success','Product Added Successfully','success')
   }
   back(){
-    this.router.navigate(['viewAllProducts'])
+    this.router.navigate(['view-all-products'])
   }
 }

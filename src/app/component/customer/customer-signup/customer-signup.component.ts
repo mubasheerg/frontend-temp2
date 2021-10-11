@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Admin } from 'src/app/models/admin';
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
 import Swal from 'sweetalert2';
@@ -12,14 +11,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./customer-signup.component.css']
 })
 export class CustomerSignupComponent implements OnInit {
-
- /*  signUpForm?:FormGroup;
-  errorMessage?:string;
-  customer?:Customer;
-  custMail?:string;
-  mailCustomer?:Customer;
-  phoneCustomer?:Customer; */
-
 
   constructor(public activatedRoute: ActivatedRoute,public customerService:CustomerService,public formBuilder: FormBuilder,public router: Router) { }
 
@@ -32,56 +23,7 @@ export class CustomerSignupComponent implements OnInit {
     confirmPwd:new FormControl('')
   });
 
-  ngOnInit(): void {
-
-/* 
-    this.customer=new Customer();
- */
-    /* this.signUpForm=this.formBuilder.group({
-      custId:[-1],
-      custName:['',[Validators.required,Validators.minLength(3)]],
-      custMail:['',[Validators.required]],
-      custPwd:['',[Validators.required,Validators.minLength(6)]],
-      confirmPwd:['',[Validators.required]],
-      custPhone:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
-      custAddress:['',[Validators.required]], 
-    },
-    {
-      validator: ConfirmedValidator('custPwd', 'confirmPwd'),
-    } 
-    );
-   */}
-
-  /* mailCheck(custMail: string) {
-    this.customerService.getCustomerByMail(custMail).subscribe((data) => {
-      this.mailCustomer = data;
-      if (this.mailCustomer == null) {
-        this.errorMessage = '';
-      } else {
-        this.errorMessage = 'MailId already exists!';
-      }
-    });
-  }
-
-  phoneCheck(custPhone: string) {
-    this.customerService.getCustomerByPhoneNo(custPhone).subscribe((data) => {
-      this.phoneCustomer = data;
-      if (this.phoneCustomer == null) {
-        this.errorMessage = '';
-      } else {
-        this.errorMessage = 'Phone number already exists';
-      }
-    });
-  }
-
-  customerSignUp() {
-    console.log(this.signUpForm);
-    this.customerService.addCustomer(this.signUpForm?.value).subscribe((response) => {
-      this.customer = response;
-      this.successNotification();
-      this.router.navigate(['login']);
-    });
-  } */
+  ngOnInit(): void {}
 
   customerSignUp(){
     const customer:Customer=new Customer();

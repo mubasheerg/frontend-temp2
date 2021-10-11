@@ -10,8 +10,7 @@ export class AppComponent {
   title = 'temp-frontend';
 
   constructor(public router:Router){}
-    ngOnInit():void{
-      this.router.navigate(['login'])
+    ngOnInit():void{  
     }
 }
 

@@ -37,7 +37,7 @@ export class EditProductComponent implements OnInit {
   }
   back()
   {
-    this.router.navigate(['viewAllProducts'])
+    this.router.navigate(['viewaall-products'])
   }
 
 successNotification(){

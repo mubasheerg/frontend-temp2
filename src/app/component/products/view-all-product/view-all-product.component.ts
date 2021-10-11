@@ -103,7 +103,7 @@ export class ViewAllProductComponent implements OnInit {
   }
 
   addProducts(){
-    this.router.navigate(['addProducts'])
+    this.router.navigate(['add-products'])
   }
 
   getProductsById(){}
@@ -122,6 +122,7 @@ export class ViewAllProductComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.deleteProducts(prodId)
+        this.viewAllProducts();
         Swal.fire('Removed!','Product removed successfully!','success')
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire('Cancelled','Product not deleted','error')
