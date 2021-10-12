@@ -9,6 +9,7 @@ import { ViewAllOrderComponent } from './component/order/view-all-order/view-all
 import { AddProductComponent } from './component/products/add-products/add-product.component';
 import { EditProductComponent } from './component/products/edit-products/edit-product.component';
 import { ViewAllProductComponent } from './component/products/view-all-product/view-all-product.component';
+import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'view-all-orders',component:ViewAllOrderComponent}, 
   {path:'customer-dashboard',component:CustomerDashboardComponent},
   {path:'customer-view-product',component:CustomerViewProductComponent},
+  {path:'add-stocks',component:AddStocksComponent},
   {path:'**',component:LoginComponent}
 
 ];

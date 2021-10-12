@@ -1,1 +1,16 @@
-<p>add-stocks works!</p>
+<div class="container-fluid mb-3">
+    <form [formGroup]="AddStockForm">
+        <div class="form-group">
+            <label>Product Name</label>
+            <select class="custom-select" class="form-control" name="product" formControlName="product">
+                <option value="" selected>Select the product</option>
+                <option *ngFor="let product of products">{{product.prodId}}-{{product.prodName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="number" class="form-control" name="stock" formControlName="stock" placeholder="Enter the stock">
+        </div>
+        <button class="btn btn-info" type="submit" (click)="addStock()">Add</button>
+    </form>
+</div>
