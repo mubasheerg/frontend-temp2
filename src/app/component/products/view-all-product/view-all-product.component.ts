@@ -98,7 +98,6 @@ export class ViewAllProductComponent implements OnInit {
           this.tt=true;
         }
       })
-    
     }
   }
 
