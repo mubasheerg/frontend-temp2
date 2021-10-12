@@ -1,9 +1,30 @@
-<body>
-    <br>
-        <button routerLink="/view-all-products">Products</button>
-    <br>
-    <br>
-        <button routerLink="/view-all-orders">Orders</button>
-    <br>
+<nav class="navbar navbar-expand-md navbar-dark bg-danger fixed-top">
+    <a class="navbar-brand" href="#">Shop Management System</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsExampleDefault"
+      aria-controls="navbarsExampleDefault"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link active" routerLink="/customer-view-product">Order a product</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" routerLink="/my-cart">My Cart</a>
+          </li>
+      </ul>
+    </div>
 
-</body>
+    <div>
+      <button type="button" class="btn btn-danger" routerLink="/login">
+        Log out
+      </button>
+    </div>
+  </nav>
