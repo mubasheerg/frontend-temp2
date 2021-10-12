@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddProductComponent } from './component/products/add-products/add-product.component';
 import { ViewAllProductComponent } from './component/products/view-all-product/view-all-product.component';
 import { EditProductComponent } from './component/products/edit-products/edit-product.component';
+import { CustomerViewProductComponent } from './component/customer/customer-view-product/customer-view-product.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditProductComponent } from './component/products/edit-products/edit-pr
     AdminDashboardComponent,
     AddProductComponent,
     EditProductComponent,
-    ViewAllProductComponent
+    ViewAllProductComponent,
+    CustomerViewProductComponent
   ],
   imports: [
     BrowserModule,
