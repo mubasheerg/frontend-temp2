@@ -34,7 +34,7 @@ export class CustomerService {
 
   getCustomerByName(custName:string):Observable<Customer>
   {
-    return this.http.get<Customer>(`${customerURL}/getCustomerByPhoneNo/${custName}`);
+    return this.http.get<Customer>(`${customerURL}/getCustomerByName/${custName}`);
   }
 
   getAllCustomers():Observable<Customer[]>

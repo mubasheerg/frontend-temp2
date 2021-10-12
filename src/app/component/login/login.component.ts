@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
 
-  customer:Observable<Customer>|any;
+  customer:Customer=new Customer();
   admin:Observable<Admin>|any;
 
   constructor(private router:Router,public customerService:CustomerService,public adminService:AdminService) { }
@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     });
     this.customerService.getCustomerByMail(credential.username).subscribe((data)=>{
        this.customer=data;
-       this.customer=this.customer.data;
        console.log(this.customer.custPwd);
      });   
      this.check(credential);
@@ -38,21 +37,25 @@ export class LoginComponent implements OnInit {
     async check(credential:any){
       if (credential.username == 'admin123' && credential.password == 'admin@123') {
         this.successNotification();
+        await delay(1000);
         this.router.navigate(['adminDashboard']);
       }
-      else if (this.customer != null && this.customer.password == credential.password) {
+      else if (this.customer != null && this.customer.custPwd == credential.password) {
        this.successNotification();
-       localStorage.setItem('customerMail', credential.username);
-       this.router.navigate(['customerDashboard']);
+       localStorage.setItem('custMail', credential.username);
+       await delay(1000);
+       this.router.navigate(['customer-dashboard']);
       }
       else if (this.admin != null && this.admin.adminPwd == credential.password){
        this.successNotification();
        localStorage.setItem('adminId', credential.username);
+       await delay(1000);
        this.router.navigate(['']);
       }
       else {
        this.WrongLoginNotification();
-       window.location.reload();
+       await delay(1000);
+       //window.location.reload();
       }
     }
     
@@ -64,5 +67,9 @@ export class LoginComponent implements OnInit {
     }
 
 }
+function delay(ms: number) {
 
+  return new Promise((resolve) => setTimeout(resolve, ms));
+
+}
 
