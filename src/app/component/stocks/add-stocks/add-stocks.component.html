@@ -1,16 +1,20 @@
+<app-admin-dashboard></app-admin-dashboard>
 <div class="container-fluid mb-3">
+    <div class="stockForm">
     <form [formGroup]="AddStockForm">
-        <div class="form-group">
+        <div class="form-group col-sm-6">
             <label>Product Name</label>
             <select class="custom-select" class="form-control" name="product" formControlName="product">
                 <option value="" selected>Select the product</option>
                 <option *ngFor="let product of products">{{product.prodId}}-{{product.prodName}}</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group col-sm-6">
             <label>Stock</label>
             <input type="number" class="form-control" name="stock" formControlName="stock" placeholder="Enter the stock">
         </div>
         <button class="btn btn-info" type="submit" (click)="addStock()">Add</button>
+        <button style="margin-left:0.5cm" class="btn btn-info" type="reset">Clear</button>
     </form>
+</div>
 </div>
