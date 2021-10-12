@@ -14,9 +14,9 @@
         <form
           #customerForm="ngForm"
           (ngSubmit)="onLogin(customerForm.value)"
-          style="width: 450px"
+          style="width: 450px;margin-left: 550px;"
         >
-          <h1 class="h3 mb-3 fw-normal" align="center">Login</h1>
+          <h1 class="h3 mb-3 fw-normal" class="center">Login</h1>
 
           <div class="form-floating">
             <label for="floatingInput">Username</label>
@@ -65,8 +65,8 @@
           </div>
           <td>
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button
-              style="margin-left: 70px; width: 80px"
+            <div class="center"><button
+              style=" width: 80px"
               class="btn btn-primary"
               type="submit"
               [disabled]="customerForm.invalid"
@@ -74,10 +74,12 @@
               Login
             </button>
             <br /><br /><br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/customerSignUp">
-              Sign Up?</a
+            
+              <a routerLink="/customerSignUp">
+               Sign Up?</a
             >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="forgotPassword">Forgot Password?</a>&nbsp;&nbsp;
+          </div>
           </td>
         </form>
       </main>
