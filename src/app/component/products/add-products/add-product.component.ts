@@ -43,7 +43,7 @@ export class AddProductComponent implements OnInit {
       },
       (error) => {
         this.successNotification();
-        console.log('Error in adding product' + error);
+        this.router.navigate(['add-stocks']);
       }
     );
   }

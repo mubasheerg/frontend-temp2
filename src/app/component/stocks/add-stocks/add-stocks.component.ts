@@ -40,6 +40,7 @@ export class AddStocksComponent implements OnInit {
     this.stockService.addStocks(stock).subscribe((response) => {
       console.log(response);
     });
+    this.router.navigate(['view-all-products']);
   }
   get product() {
     return this.AddStockForm.get('product');
