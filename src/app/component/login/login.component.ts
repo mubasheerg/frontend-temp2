@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
     if (login.username == 'admin123' && login.password == 'admin@123') {
       this.successNotification();
       this.router.navigate(['admin-dashboard']);
+    } else if (login.username != 'admin123' || login.password != 'admin@123') {
+      this.WrongLoginNotification();
     }
     this.customerService
       .getCustomerByMail(login.username)
@@ -43,44 +45,6 @@ export class LoginComponent implements OnInit {
         }
       });
   }
-  // async onLogin(credential:any){
-  //   this.adminService.getAdminById(credential.username).subscribe((data) => {
-  //     this.admin = data;
-  //     this.admin = this.admin.data;
-  //     console.log(this.admin.adminPwd);
-  //   });
-  //   this.customerService.getCustomerByMail(credential.username).subscribe((data)=>{
-  //      this.customer=data;
-  //      console.log(this.customer.custPwd);
-  //    });
-  //    this.check(credential);
-  //  }
-
-  //   async check(credential:any){
-  //     if (credential.username == 'admin123' && credential.password == 'admin@123') {
-  //       this.successNotification();
-  //       await delay(1000);
-  //       this.router.navigate(['adminDashboard']);
-  //     }
-  //     else if (this.customer != null && this.customer.custPwd == credential.password) {
-  //      this.successNotification();
-  //      localStorage.setItem('custMail', credential.username);
-  //      await delay(1000);
-  //      this.router.navigate(['customer-dashboard']);
-  //     }
-  //     else if (this.admin != null && this.admin.adminPwd == credential.password){
-  //      this.successNotification();
-  //      localStorage.setItem('adminId', credential.username);
-  //      await delay(1000);
-  //      this.router.navigate(['']);
-  //     }
-  //     else {
-  //      this.WrongLoginNotification();
-  //      await delay(1000);
-  //      //window.location.reload();
-  //     }
-  //   }
-
   successNotification() {
     Swal.fire('Success', 'Login Success!', 'success');
   }
