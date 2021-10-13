@@ -3,65 +3,67 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Customer } from '../models/customer';
 
-const customerURL="http://localhost:9001/customer"
+const customerURL = 'http://localhost:9001/customer';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
+  constructor(public http: HttpClient) {}
 
-  constructor(public http:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
-  httpOptions={
-    headers:new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
-
-  getCustomerById(custId:number):Observable<Customer>
-  {
+  getCustomerById(custId: number): Observable<Customer> {
     return this.http.get<Customer>(`${customerURL}/${custId}`);
   }
 
-  getCustomerByMail(custMail:string):Observable<Customer>
-  {
-    return this.http.get<Customer>(`${customerURL}/getCustomerByMail/${custMail}`);
+  getCustomerByMail(custMail: string): Observable<Customer> {
+    return this.http.get<Customer>(
+      `${customerURL}/getCustomerByMail/${custMail}`
+    );
   }
 
-  getCustomerByPhoneNo(custPhone:string):Observable<Customer>
-  {
-    return this.http.get<Customer>(`${customerURL}/getCustomerByPhoneNo/${custPhone}`);
+  getCustomerByPhoneNo(custPhone: string): Observable<Customer> {
+    return this.http.get<Customer>(
+      `${customerURL}/getCustomerByPhoneNo/${custPhone}`
+    );
   }
 
-  getCustomerByName(custName:string):Observable<Customer>
-  {
-    return this.http.get<Customer>(`${customerURL}/getCustomerByName/${custName}`);
+  getCustomerByName(custName: string): Observable<Customer> {
+    return this.http.get<Customer>(
+      `${customerURL}/getCustomerByName/${custName}`
+    );
   }
 
-  getAllCustomers():Observable<Customer[]>
-  {
+  getAllCustomers(): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${customerURL}`);
   }
 
-  deleteCustomer(custId:number):Observable<Customer>
-  {
+  deleteCustomer(custId: number): Observable<Customer> {
     return this.http.delete(`${customerURL}/${custId}`);
   }
 
-  addCustomer(customer:Customer):Observable<Customer>{
-    return this.http.post<Customer>(customerURL,customer,this.httpOptions);
+  addCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(customerURL, customer, this.httpOptions);
   }
 
-  updateCustomer(customer:Customer):Observable<Customer>{
-    return this.http.put<Customer>(customerURL,customer);
+  updateCustomer(customer: Customer): Observable<Customer> {
+    return this.http.put<Customer>(customerURL, customer);
   }
 
   forgotPassword(custMail: string): Observable<Customer> {
-    return this.http.put<Customer>(`${customerURL}/forgotpassword/${custMail}`,this.httpOptions);
+    return this.http.put<Customer>(
+      `${customerURL}/forgotpassword/${custMail}`,
+      this.httpOptions
+    );
   }
 
-  customerLogin(custMail:string,custPwd:String):Observable<Customer>
-  {
-    return this.http.get<Customer>(`${customerURL}/customerLogin/${custMail}/${custPwd}`);
+  customerLogin(custMail: string, custPwd: String): Observable<Customer> {
+    return this.http.get<Customer>(
+      `${customerURL}/customerLogin/${custMail}/${custPwd}`
+    );
   }
-
 }

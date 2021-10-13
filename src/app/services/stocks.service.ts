@@ -3,43 +3,36 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Stocks } from '../models/stocks';
 
-const stocksURL="http://localhost:9001/stocks"
+const stocksURL = 'http://localhost:9001/stocks';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StocksService {
+  constructor(public http: HttpClient) {}
 
-  constructor(public http:HttpClient) { }
-
-  httpOptions ={
+  httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+      'Content-Type': 'application/json',
+    }),
+  };
 
-  getAllStocks():Observable<Stocks[]>
-  {
+  getAllStocks(): Observable<Stocks[]> {
     return this.http.get<Stocks[]>(`${stocksURL}`);
   }
 
-  deleteStocks(stockId:number):Observable<Stocks>
-  {
+  deleteStocks(stockId: number): Observable<Stocks> {
     return this.http.delete(`${stocksURL}/${stockId}`);
   }
 
-  addStocks(stocks:Stocks):Observable<Stocks>
-  {
-    return this.http.post<Stocks>(stocksURL,stocks,this.httpOptions);
+  addStocks(stocks: Stocks): Observable<Stocks> {
+    return this.http.post<Stocks>(stocksURL, stocks, this.httpOptions);
   }
 
-  updateStocks(stocks:Stocks):Observable<Stocks>
-  {
-    return this.http.put<Stocks>(stocksURL,Stocks,this.httpOptions);
+  updateStocks(stocks: Stocks): Observable<Stocks> {
+    return this.http.put<Stocks>(stocksURL, Stocks, this.httpOptions);
   }
 
-  getStocksById(stockId:number):Observable<Stocks>
-  {
+  getStocksById(stockId: number): Observable<Stocks> {
     return this.http.get<Stocks>(`${stocksURL}/${stockId}`);
   }
-
 }

@@ -1,43 +1,56 @@
 <app-admin-dashboard></app-admin-dashboard>
 <div class="reglist">
-    <form style="margin-top: 50px;margin-left: 550px;width: 340px;" (ngSubmit)="updateProducts()">
-  <fieldset>
-  
+  <form
+    style="margin-top: 50px; margin-left: 550px; width: 340px"
+    (ngSubmit)="updateProducts()"
+  >
+    <fieldset>
       <div class="form-group">
         <label>Product Name:</label>
-        <input type="text" class="form-control" [(ngModel)]="product.prodName" name="productName" readonly=true>
-        <!-- <div class="alert alert-danger"
-            *ngIf="editProductForm.get('prodName').hasError('required') && editProductForm.get('prodName').dirty">
-            Product Name is required
-        </div> -->
-    </div><br>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.prodName"
+          name="productName"
+          readonly="true"
+        />
+      </div>
+      <br />
 
-    <div class="form-group">
+      <div class="form-group">
         <label>Price:</label>
-        <input type="number" class="form-control" [(ngModel)]="product.prodPrice" name="productPrice">
-        <!-- <div class="alert alert-danger"
-            *ngIf="editProductForm.get('prodPrice').hasError('required') && editProductForm.get('prodPrice').dirty">
-            Price is required
-        </div>
-        <div class="alert alert-danger"
-        *ngIf="editProductForm.get('prodPrice').hasError('isnegative') && editProductForm.get('prodPrice').dirty">
-        Price should not be neagtive
-    </div> -->
-    </div><br>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="product.prodPrice"
+          name="productPrice"
+        />
+      </div>
+      <br />
 
-    <div class="form-group">
+      <div class="form-group">
         <label>Category:</label>
-        <input type="text" class="form-control" [(ngModel)]="product.category" name="productCategory" readonly=true>
-        <!-- <div class="alert alert-danger"
-            *ngIf="editProductForm.get('category').hasError('required') && editProductForm.get('category').dirty">
-            Category is required
-        </div> -->
-    </div><br>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="product.category"
+          name="productCategory"
+          readonly="true"
+        />
+      </div>
+      <br />
 
-        <button type="submit" class="btn btn-primary" [disabled] ="editProductForm.invalid" style="margin-left: 30px">Update</button>&nbsp;&nbsp;
-        <button class="btn btn-success" type="reset">Clear</button>&nbsp;&nbsp;
-        <button  class="btn btn-info" (click)="back()">Back</button>&nbsp;&nbsp;
-    <br><br>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="editProductForm.invalid"
+        style="margin-left: 30px"
+      >
+        Update</button
+      >&nbsp;&nbsp;
+      <button class="btn btn-success" type="reset">Clear</button>&nbsp;&nbsp;
+      <button class="btn btn-info" (click)="back()">Back</button>&nbsp;&nbsp;
+      <br /><br />
     </fieldset>
-    </form>
+  </form>
 </div>

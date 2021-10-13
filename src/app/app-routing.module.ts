@@ -12,23 +12,21 @@ import { ViewAllProductComponent } from './component/products/view-all-product/v
 import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.component';
 
 const routes: Routes = [
-
-  {path:'customer-signUp',component:CustomerSignupComponent},
-  {path:'login',component:LoginComponent},
-  {path:'admin-dashboard',component:AdminDashboardComponent},
-  {path:'add-products',component:AddProductComponent},
-  {path:'edit-products/:prodId',component:EditProductComponent},
-  {path:'view-all-products',component:ViewAllProductComponent},
-  {path:'view-all-orders',component:ViewAllOrderComponent}, 
-  {path:'customer-dashboard',component:CustomerDashboardComponent},
-  {path:'customer-view-product',component:CustomerViewProductComponent},
-  {path:'add-stocks',component:AddStocksComponent},
-  {path:'**',component:LoginComponent}
-
+  { path: 'customer-signUp', component: CustomerSignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent },
+  { path: 'add-products', component: AddProductComponent },
+  { path: 'edit-products/:prodId', component: EditProductComponent },
+  { path: 'view-all-products', component: ViewAllProductComponent },
+  { path: 'view-all-orders', component: ViewAllOrderComponent },
+  { path: 'customer-dashboard', component: CustomerDashboardComponent },
+  { path: 'customer-view-product', component: CustomerViewProductComponent },
+  { path: 'add-stocks', component: AddStocksComponent },
+  { path: '**', component: LoginComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

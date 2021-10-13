@@ -24,7 +24,7 @@ import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.com
     EditProductComponent,
     ViewAllProductComponent,
     CustomerViewProductComponent,
-    AddStocksComponent
+    AddStocksComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +32,9 @@ import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

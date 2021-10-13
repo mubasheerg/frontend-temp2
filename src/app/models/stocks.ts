@@ -1,8 +1,8 @@
-import { Products } from "./products";
+import { Products } from './products';
 
-export class Stocks{
-    stockId?:number;
-    count?:number;
-    stockUpdatedOn?:Date;
-    product?:Products;
+export class Stocks {
+  stockId?: number;
+  count?: number;
+  stockUpdatedOn?: Date;
+  product?: Products;
 }

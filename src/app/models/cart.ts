@@ -1,8 +1,8 @@
-import { Customer } from "./customer";
+import { Customer } from './customer';
 
-export class Cart{
-   cartId?:number; 
-   cartAddedOn?:Date;
-   cartUpdatedOn?:Date;
-   customer?:Customer;
+export class Cart {
+  cartId?: number;
+  cartAddedOn?: Date;
+  cartUpdatedOn?: Date;
+  customer?: Customer;
 }

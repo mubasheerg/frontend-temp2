@@ -5,18 +5,13 @@ import { Products } from 'src/app/models/products';
 @Component({
   selector: 'app-view-all-order',
   templateUrl: './view-all-order.component.html',
-  styleUrls: ['./view-all-order.component.css']
+  styleUrls: ['./view-all-order.component.css'],
 })
 export class ViewAllOrderComponent implements OnInit {
+  errorMessage?: string;
+  products: Products[] = [];
 
-  errorMessage?:string;
-  products:Products[]=[];
-  
+  constructor(public router: Router) {}
 
-  constructor(public router:Router) { }
-
-  ngOnInit(): void {
-  }
-
-
+  ngOnInit(): void {}
 }

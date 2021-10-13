@@ -11,50 +11,52 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-order',
   templateUrl: './add-order.component.html',
-  styleUrls: ['./add-order.component.css']
+  styleUrls: ['./add-order.component.css'],
 })
 export class AddOrderComponent implements OnInit {
+  constructor(
+    public orderService: OrderService,
+    public formBuilder: FormBuilder,
+    public router: Router,
+    public activatedRoute: ActivatedRoute
+  ) {}
 
-  constructor(public orderService:OrderService,public formBuilder:FormBuilder,public router:Router,public activatedRoute:ActivatedRoute) { }
-
-  addOrderForm?:FormGroup;
-  order?:Order;
-  products?:Products
-  customer?:Customer
-  customerId?:number;
-  errorMessage?:string;
-  date=new Date();
+  addOrderForm?: FormGroup;
+  order?: Order;
+  products?: Products;
+  customer?: Customer;
+  customerId?: number;
+  errorMessage?: string;
+  date = new Date();
 
   ngOnInit(): void {
-    this.addOrderForm=this.formBuilder.group({
-    amount:['',[Validators.required]],
-    prodId:[this.activatedRoute.snapshot.params['prodId']],
-    custId:[this.activatedRoute.snapshot.params['custId']],
-    })
+    this.addOrderForm = this.formBuilder.group({
+      amount: ['', [Validators.required]],
+      prodId: [this.activatedRoute.snapshot.params['prodId']],
+      custId: [this.activatedRoute.snapshot.params['custId']],
+    });
   }
 
-  addOrders(){
-    console.log(this.order=this.addOrderForm?.value);
-    this.order=this.addOrderForm?.value;
-    this.orderService.addOrders(this.addOrderForm?.value)
-    .subscribe(
-      res=>{
+  addOrders() {
+    console.log((this.order = this.addOrderForm?.value));
+    this.order = this.addOrderForm?.value;
+    this.orderService.addOrders(this.addOrderForm?.value).subscribe(
+      (res) => {
         console.log(res);
-        console.log("Ordered succesfully");
+        console.log('Ordered succesfully');
       },
-      error=>
-      {
+      (error) => {
         this.successNotification();
-        console.log("Error in adding order"+error)
+        console.log('Error in adding order' + error);
         this.back();
       }
-    )
+    );
   }
 
-  successNotification(){
-    Swal.fire('Success','Ordered Successfully','success')
+  successNotification() {
+    Swal.fire('Success', 'Ordered Successfully', 'success');
   }
-  back(){
-    this.router.navigate(['customer-dashboard'])
+  back() {
+    this.router.navigate(['customer-dashboard']);
   }
 }

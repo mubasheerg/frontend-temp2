@@ -4,23 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-customer-dashboard',
   templateUrl: './customer-dashboard.component.html',
-  styleUrls: ['./customer-dashboard.component.css']
+  styleUrls: ['./customer-dashboard.component.css'],
 })
 export class CustomerDashboardComponent implements OnInit {
+  constructor(public router: Router) {}
 
-  constructor(public router:Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  viewAllOrders() {
+    this.router.navigate(['viewAllOrders']);
   }
 
-  viewAllOrders()
-  {
-    this.router.navigate(['viewAllOrders'])
+  viewAllProducts() {
+    this.router.navigate(['viewAllProducts']);
   }
-
-  viewAllProducts()
-  {
-    this.router.navigate(['viewAllProducts'])
-  }
-
 }

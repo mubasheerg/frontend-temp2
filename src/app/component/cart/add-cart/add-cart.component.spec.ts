@@ -8,9 +8,8 @@ describe('AddCartComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddCartComponent ]
-    })
-    .compileComponents();
+      declarations: [AddCartComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

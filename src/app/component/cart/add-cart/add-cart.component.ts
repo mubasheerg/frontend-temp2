@@ -8,47 +8,46 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-cart',
   templateUrl: './add-cart.component.html',
-  styleUrls: ['./add-cart.component.css']
+  styleUrls: ['./add-cart.component.css'],
 })
 export class AddCartComponent implements OnInit {
+  addcartForm?: FormGroup;
+  cart?: Cart;
+  errorMessage?: string;
+  cartExists?: number;
+  date = new Date();
 
-  addcartForm?:FormGroup;
-  cart?:Cart;
-  errorMessage?:string;
-  cartExists?:number;
-  date=new Date();
-
-  constructor(public activatedRoute:ActivatedRoute,public formBuilder:FormBuilder,public cartService:CartService,public router:Router) { }
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    public formBuilder: FormBuilder,
+    public cartService: CartService,
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.addcartForm=this.formBuilder.group({
-      
-    })
+    this.addcartForm = this.formBuilder.group({});
   }
 
-  addCart()
-  {
-    console.log(this.cart=this.addcartForm?.value);
-    this.cart=this.addcartForm?.value;
-    this.cartService.addCart(this.addcartForm?.value)
-    .subscribe(
-      res=>{
+  addCart() {
+    console.log((this.cart = this.addcartForm?.value));
+    this.cart = this.addcartForm?.value;
+    this.cartService.addCart(this.addcartForm?.value).subscribe(
+      (res) => {
         console.log(res);
-        console.log("Cart added successfully");
+        console.log('Cart added successfully');
       },
-      error=>
-      {
+      (error) => {
         this.successNotification();
-        console.log("Error in adding cart"+error)
+        console.log('Error in adding cart' + error);
         this.back();
       }
-    )
+    );
   }
 
-  successNotification(){
-    Swal.fire('Success','Cart added successfully','success')
+  successNotification() {
+    Swal.fire('Success', 'Cart added successfully', 'success');
   }
-  back(){
-    this.router.navigate(['viewAllCart'])
+  back() {
+    this.router.navigate(['viewAllCart']);
   }
 }

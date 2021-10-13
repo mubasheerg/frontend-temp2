@@ -3,21 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Admin } from '../models/admin';
 
-const adminURL="http://localhost:9001/admin"
+const adminURL = 'http://localhost:9001/admin';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
+  constructor(public http: HttpClient) {}
 
-  constructor(public http:HttpClient) { }
-
-  httpOptions ={
+  httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }
+      'Content-Type': 'application/json',
+    }),
+  };
 
-  adminLogin(adminMail: string, adminPwd: string):Observable<Admin> {
+  adminLogin(adminMail: string, adminPwd: string): Observable<Admin> {
     return this.http.get<Admin>(`${adminURL}/login/${adminMail}/${adminPwd}`);
   }
 

@@ -8,46 +8,44 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-edit-cart',
   templateUrl: './edit-cart.component.html',
-  styleUrls: ['./edit-cart.component.css']
+  styleUrls: ['./edit-cart.component.css'],
 })
 export class EditCartComponent implements OnInit {
+  editcartForm?: FormGroup;
+  cart?: Cart;
+  errorMessage?: string;
+  cartId: number;
+  date = new Date();
 
-  editcartForm?:FormGroup;
-  cart?:Cart;
-  errorMessage?:string;
-  cartId:number;
-  date=new Date();
-
-  constructor(public activatedRoute:ActivatedRoute,public formBuilder:FormBuilder,public cartService:CartService,public router:Router) { }
+  constructor(
+    public activatedRoute: ActivatedRoute,
+    public formBuilder: FormBuilder,
+    public cartService: CartService,
+    public router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.cartId=this.activatedRoute.snapshot.params['cartId'];
-    console.log("cartId:",this.cartId)
-  
-    
-    
+    this.cartId = this.activatedRoute.snapshot.params['cartId'];
+    console.log('cartId:', this.cartId);
   }
 
-  updateCart(){
-    this.cartService.updateCart(this.editcartForm?.value)
-    .subscribe(
-      response=>{
+  updateCart() {
+    this.cartService.updateCart(this.editcartForm?.value).subscribe(
+      (response) => {
         console.log(response);
-        console.log("Updated successfully");
+        console.log('Updated successfully');
       },
-      error=>{
+      (error) => {
         this.successNotification();
         this.back();
-        console.log("Error in updation")
+        console.log('Error in updation');
       }
-      );
+    );
   }
-  back()
-  {
-    this.router.navigate(['viewAllProducts'])
+  back() {
+    this.router.navigate(['viewAllProducts']);
   }
-  successNotification(){
-    Swal.fire('Success', 'Product updated successfully', 'success')
+  successNotification() {
+    Swal.fire('Success', 'Product updated successfully', 'success');
   }
-
 }

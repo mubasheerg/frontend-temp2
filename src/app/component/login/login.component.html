@@ -13,7 +13,7 @@
         <form
           #customerForm="ngForm"
           (ngSubmit)="onLogin(customerForm.value)"
-          style="width: 450px;margin-left: 550px;"
+          style="width: 450px; margin-left: 550px"
         >
           <h1 class="h3 mb-3 fw-normal" class="center">Login</h1>
 
@@ -31,7 +31,10 @@
             />
           </div>
           <div
-            *ngIf="customername.invalid && (customername?.touched || customername?.dirty)"
+            *ngIf="
+              customername.invalid &&
+              (customername?.touched || customername?.dirty)
+            "
           >
             <small *ngIf="customername?.errors?.required" class="text-danger"
               >Username is required</small
@@ -62,21 +65,24 @@
               >Password must be atleast 5 letters</small
             >
           </div>
-            <br />
-            <div class="center"><button
-              style=" width: 80px"
+          <br />
+          <div class="center">
+            <button
+              style="width: 80px"
               class="btn btn-lg btn-primary"
               type="submit"
               [disabled]="customerForm.invalid"
             >
               Login
-            </button></div>
-            <br /><br /><br />
-            <div class="center">
-              <a style="margin-left: 40px;" routerLink="/customer-ignUp">
-               Sign Up?</a>&nbsp;&nbsp;&nbsp;
+            </button>
+          </div>
+          <br /><br /><br />
+          <div class="center">
+            <a style="margin-left: 40px" routerLink="/customer-ignUp">
+              Sign Up?</a
+            >&nbsp;&nbsp;&nbsp;
             <!-- <a href="forgotPassword">Forgot Password?</a> -->
-            </div>
+          </div>
         </form>
       </main>
     </div>

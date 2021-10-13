@@ -4,28 +4,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent implements OnInit {
+  constructor(public router: Router) {}
 
-  constructor(public router:Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  viewAllProducts() {
+    this.router.navigate(['viewAllProducts']);
   }
 
-  viewAllProducts()
-  {
-    this.router.navigate(['viewAllProducts'])
+  viewAllOrders() {
+    this.router.navigate(['viewAllOrders']);
   }
 
-  viewAllOrders()
-  {
-    this.router.navigate(['viewAllOrders'])
+  viewAllStocks() {
+    this.router.navigate(['viewAllStocks']);
   }
-
-  viewAllStocks()
-  {
-    this.router.navigate(['viewAllStocks'])
-  }
-
 }

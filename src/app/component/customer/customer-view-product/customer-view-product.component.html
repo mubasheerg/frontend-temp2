@@ -1,35 +1,53 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
-<br><br>
+<br /><br />
 <div class="search-hero">
-
-    <input style="margin-left:40px;width: 300px;" [ngClass]="['form-control','fa fa-search']" type="text" name="search" [(ngModel)]="searches" 
-        autocomplete="off" placeholder="&#xF002;Search Products">
-     
-  </div>
-<h3><font color="red"> &nbsp;&nbsp;&nbsp;{{errorMessage}}</font></h3>
+  <input
+    style="margin-left: 40px; width: 300px"
+    [ngClass]="['form-control', 'fa fa-search']"
+    type="text"
+    name="search"
+    [(ngModel)]="searches"
+    autocomplete="off"
+    placeholder="&#xF002;Search Products"
+  />
+</div>
+<h3>
+  <font color="red"> &nbsp;&nbsp;&nbsp;{{ errorMessage }}</font>
+</h3>
 <div>
-   <div class="reglist">
-       
-        <table class="table table-striped">
-             <thead>
-             <tr>
-             <th>Product Name</th>
-             <th>Product Price</th>
-             <th>Category</th>
-             <th>Stocks</th>
-             <th></th>
-             <th></th>
-             </tr>
-             </thead>
-             <tbody>
-             <tr *ngFor="let p of products">
-             <td>{{p.prodName}}</td>
-             <td>{{p.prodPrice}}</td>
-             <td>{{p.category}}</td>
-             <td *ngIf="products!=null"><button type="button" class="btn btn-info" (click)="addToCart()">Add To Cart</button></td>
-             <td *ngIf="products!=null"><button type="button" class="btn btn-danger" (click)="buy()">Buy</button></td>
-             </tr>
-             </tbody>
-             </table>
-    </div> 
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Category</th>
+          <th>Stocks</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{ p.prodName }}</td>
+          <td>{{ p.prodPrice }}</td>
+          <td>{{ p.category }}</td>
+          <td *ngIf="products != null">
+            <button type="button" class="btn btn-info" (click)="addToCart()">
+              Add To Cart
+            </button>
+          </td>
+          <td *ngIf="products != null">
+            <button type="button" class="btn btn-danger" (click)="buy()">
+              Buy
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

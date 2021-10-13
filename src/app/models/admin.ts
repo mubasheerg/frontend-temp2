@@ -1,8 +1,7 @@
-export class Admin
-{
-adminId?:number;
-adminName?:string;
-mailId?:string;
-adminPwd?:string;
-confirmPwd?:string;
+export class Admin {
+  adminId?: number;
+  adminName?: string;
+  mailId?: string;
+  adminPwd?: string;
+  confirmPwd?: string;
 }
