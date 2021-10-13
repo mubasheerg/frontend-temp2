@@ -33,31 +33,31 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.prodId = this.activatedRoute.snapshot.params['prodId'];
-    this.stockId=this.activatedRoute.snapshot.params['count'];
+    this.stockId = this.activatedRoute.snapshot.params['count'];
     console.log('prodId:', this.prodId);
-    console.log('count',this.stockId);
+    console.log('count', this.stockId);
     this.productsService.getProductsById(this.prodId).subscribe((data) => {
       this.product = data;
       console.log(this.product);
-      this.stockService.getStocksById(this.stockId).subscribe((data)=>{
-        this.stock=data;
+      this.stockService.getStocksById(this.stockId).subscribe((data) => {
+        this.stock = data;
         console.log(this.stock);
-      })
+      });
     });
   }
   updateProducts() {
     this.productsService.updateProducts(this.product).subscribe((data) => {
       console.log(data);
-      //this.successNotification();
+      this.successNotification();
     });
-    this.stockService.updateStocks(this.stock).subscribe(data=>{
+    this.stockService.updateStocks(this.stock).subscribe((data) => {
       console.log(data);
-    })
+    });
   }
-  updateStock(){
-    this.stockService.updateStocks(this.stock).subscribe(data=>{
+  updateStock() {
+    this.stockService.updateStocks(this.stock).subscribe((data) => {
       console.log(data);
-    })
+    });
   }
   back() {
     this.router.navigate(['view-all-products']);

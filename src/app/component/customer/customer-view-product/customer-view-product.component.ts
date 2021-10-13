@@ -17,8 +17,7 @@ export class CustomerViewProductComponent implements OnInit {
   public errorMessage: string = '';
   public searches: string = '';
 
-  ngOnInit(): void {}
-  viewAllProducts() {
+  ngOnInit(): void {
     this.productsService.getAllProducts().subscribe((data: any[]) => {
       this.products = data;
       console.log(this.products);
