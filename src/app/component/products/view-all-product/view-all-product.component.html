@@ -5,17 +5,7 @@
 />
 
 <br /><br />
-<div class="search-hero">
-  <input
-    style="margin-left: 40px; width: 300px"
-    [ngClass]="['form-control', 'fa fa-search']"
-    type="text"
-    name="search"
-    [(ngModel)]="searches"
-    autocomplete="off"
-    placeholder="&#xF002;Search Products"
-  />
-</div>
+
 <h3>
   <font color="red"> &nbsp;&nbsp;&nbsp;{{ errorMessage }}</font>
 </h3>
@@ -27,22 +17,24 @@
           <th>Product Name</th>
           <th>Product Price</th>
           <th>Category</th>
+          <th>Count</th>
           <th>Created Date</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let p of products">
+        <tr *ngFor="let p of products; let i = index">
           <td>{{ p.prodName }}</td>
           <td>{{ p.prodPrice }}</td>
           <td>{{ p.category }}</td>
+          <td>{{ stockList[i].count }}</td>
           <td>{{ p.prodAddedOn | date }}</td>
           <td *ngIf="products != null">
             <button
               type="button"
               class="btn btn-info"
-              (click)="editProducts(p.prodId)"
+              (click)="editProducts(p.prodId,stockList[i].stockId)"
             >
               Edit
             </button>

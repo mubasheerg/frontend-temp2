@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent },
   { path: 'add-products', component: AddProductComponent },
-  { path: 'edit-products/:prodId', component: EditProductComponent },
+  { path: 'edit-products/:prodId/:count', component: EditProductComponent },
   { path: 'view-all-products', component: ViewAllProductComponent },
   { path: 'view-all-orders', component: ViewAllOrderComponent },
   { path: 'customer-dashboard', component: CustomerDashboardComponent },

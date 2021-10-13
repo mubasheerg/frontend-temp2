@@ -35,4 +35,7 @@ export class StocksService {
   getStocksById(stockId: number): Observable<Stocks> {
     return this.http.get<Stocks>(`${stocksURL}/${stockId}`);
   }
+  getStocksByProductId(productList: Number[]): Observable<any> {
+    return this.http.post(`${stocksURL}/count`, productList);
+  }
 }

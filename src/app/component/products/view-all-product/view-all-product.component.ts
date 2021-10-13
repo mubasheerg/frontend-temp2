@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Products } from 'src/app/models/products';
+import { Stocks } from 'src/app/models/stocks';
 import { ProductsService } from 'src/app/services/products.service';
+import { StocksService } from 'src/app/services/stocks.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,7 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class ViewAllProductComponent implements OnInit {
   errorMessage?: string;
-  products: Products[] = [];
+  public products: Products[] = [];
   show?: boolean;
   searchProductsForm?: FormGroup;
   prodId?: number;
@@ -20,38 +22,37 @@ export class ViewAllProductComponent implements OnInit {
   searches?: any;
   tt: boolean = true;
   txtValue: any = null;
-
+  public productIdList: Number[] = [];
+  public stockList:Stocks[]=[];
   constructor(
     public productsService: ProductsService,
     public router: Router,
-    public formBuiler: FormBuilder
+    public formBuiler: FormBuilder,
+    private stockService:StocksService
   ) {}
 
   ngOnInit(): void {
     this.viewAllProducts();
+    //this.getStocks();
     this.searchProductsForm = this.formBuiler.group({
       prodId: ['', Validators.required],
     });
   }
 
-  //to get all products
   viewAllProducts() {
-    this.productsService.getAllProducts().subscribe(
-      (data: any[]) => {
-        this.products = data;
-        console.log(this.products);
-        this.show = true;
-        console.log('Getting all products');
-        if (data == null) {
-          this.errorMessage = 'No data found';
-          console.log(this.errorMessage);
-        } else {
-          console.log(data);
-          this.products = data;
-        }
-      },
-      (err) => (this.errorMessage = err)
-    );
+    this.productsService.getAllProducts().subscribe((data: any[]) => {
+      this.products = data;
+      console.log(this.products);
+      for (var i=0;i<this.products.length;i++) {
+        console.log(this.products[i].prodId)
+        this.productIdList.push(Number(this.products[i].prodId));
+      }
+      console.log(this.productIdList);
+      this.stockService.getStocksByProductId(this.productIdList).subscribe(response=>{
+        this.stockList=response;
+        console.log(this.stockList);
+      })
+    });
   }
 
   //to delete products
@@ -128,7 +129,7 @@ export class ViewAllProductComponent implements OnInit {
     });
   }
 
-  editProducts(prodId: number) {
-    this.router.navigate(['edit-products', prodId]);
+  editProducts(prodId: number,count:number) {
+    this.router.navigate(['edit-products', prodId,count]);
   }
 }

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Products } from 'src/app/models/products';
+import { Stocks } from 'src/app/models/stocks';
 import { ProductsService } from 'src/app/services/products.service';
+import { StocksService } from 'src/app/services/stocks.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,6 +17,9 @@ export class EditProductComponent implements OnInit {
   products?: Products;
   errorMessage?: string;
   ProductsExists?: string;
+  stockId?: number;
+  stock: Stocks;
+  count: number;
   prodId?: number;
   date = new Date();
   public product: Products = new Products();
@@ -22,6 +27,7 @@ export class EditProductComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public formBuilder: FormBuilder,
     public productsService: ProductsService,
+    public stockService: StocksService,
     public router: Router
   ) {}
 
