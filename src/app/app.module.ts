@@ -13,6 +13,7 @@ import { ViewAllProductComponent } from './component/products/view-all-product/v
 import { EditProductComponent } from './component/products/edit-products/edit-product.component';
 import { CustomerViewProductComponent } from './component/customer/customer-view-product/customer-view-product.component';
 import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.component';
+import { ViewCartComponent } from './component/cart/view-cart/view-cart.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.com
     ViewAllProductComponent,
     CustomerViewProductComponent,
     AddStocksComponent,
+    ViewCartComponent,
   ],
   imports: [
     BrowserModule,
