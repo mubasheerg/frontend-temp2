@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
-import { Customer } from 'src/app/models/customer';
 import { CartService } from 'src/app/services/cart.service';
-import { CustomerViewProductComponent } from '../../customer/customer-view-product/customer-view-product.component';
-
 @Component({
   selector: 'app-view-cart',
   templateUrl: './view-cart.component.html',
@@ -29,11 +26,10 @@ export class ViewCartComponent implements OnInit {
   buy(checkBox: boolean, id: number) {
     console.log(checkBox);
     console.log(id);
-    // console.log(event);
-    if(checkBox){
+    if (checkBox) {
       this.productList.push(id);
-    }else{
-      this.productList.splice(this.productList.indexOf(id),1);
+    } else {
+      this.productList.splice(this.productList.indexOf(id), 1);
     }
 
     console.log(this.productList);
