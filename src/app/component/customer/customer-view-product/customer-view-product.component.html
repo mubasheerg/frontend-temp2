@@ -21,7 +21,7 @@
           <td>{{ p.prodPrice }}</td>
           <td>{{ p.category }}</td>
           <td *ngIf="products != null">
-            <button type="button" class="btn btn-info" (click)="addToCart()">
+            <button type="button" class="btn btn-info" (click)="addToCart(p)">
               Add To Cart
             </button>
           </td>

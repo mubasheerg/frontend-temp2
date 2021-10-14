@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
         console.log(login.password);
         if (login.password == this.customer.custPwd) {
           this.successNotification();
+          localStorage.setItem('userId',String(this.customer.custId));
           this.router.navigate(['customer-dashboard']);
         } else {
           this.WrongLoginNotification();

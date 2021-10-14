@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
 import { Cart } from '../models/cart';
 
 const cartURL = 'http://localhost:9001/cart';
@@ -29,8 +28,8 @@ export class CartService {
     return this.http.post<Cart>(cartURL, cart, this.httpOptions);
   }
 
-  getCartByID(cartId: number): Observable<Cart> {
-    return this.http.get<Cart>(`${cartURL}/${cartId}`);
+  getCartByID(custId: number): Observable<Cart[]> {
+    return this.http.get<Cart[]>(`${cartURL}/getCartById/${custId}`);
   }
 
   updateCart(cart: Cart): Observable<Cart> {

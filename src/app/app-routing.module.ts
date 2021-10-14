@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './component/admin/admin-dashboard/admin-dashboard.component';
+import { ViewCartComponent } from './component/cart/view-cart/view-cart.component';
 import { CustomerDashboardComponent } from './component/customer/customer-dashboard/customer-dashboard.component';
 import { CustomerSignupComponent } from './component/customer/customer-signup/customer-signup.component';
 import { CustomerViewProductComponent } from './component/customer/customer-view-product/customer-view-product.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'view-all-orders', component: ViewAllOrderComponent },
   { path: 'customer-dashboard', component: CustomerDashboardComponent },
   { path: 'customer-view-product', component: CustomerViewProductComponent },
+  { path: 'view-cart', component: ViewCartComponent },
   { path: 'add-stocks', component: AddStocksComponent },
   { path: '**', component: LoginComponent },
 ];
