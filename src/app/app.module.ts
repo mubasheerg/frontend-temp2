@@ -14,6 +14,8 @@ import { EditProductComponent } from './component/products/edit-products/edit-pr
 import { CustomerViewProductComponent } from './component/customer/customer-view-product/customer-view-product.component';
 import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.component';
 import { ViewCartComponent } from './component/cart/view-cart/view-cart.component';
+import { ViewAllOrderComponent } from './component/admin/view-all-order/view-all-order.component';
+import { ViewCustomerOrderComponent } from './component/customer/view-customer-order/view-customer-order.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { ViewCartComponent } from './component/cart/view-cart/view-cart.componen
     CustomerViewProductComponent,
     AddStocksComponent,
     ViewCartComponent,
+    ViewAllOrderComponent,
+    ViewCustomerOrderComponent,
   ],
   imports: [
     BrowserModule,

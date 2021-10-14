@@ -6,7 +6,6 @@ import { CustomerDashboardComponent } from './component/customer/customer-dashbo
 import { CustomerSignupComponent } from './component/customer/customer-signup/customer-signup.component';
 import { CustomerViewProductComponent } from './component/customer/customer-view-product/customer-view-product.component';
 import { LoginComponent } from './component/login/login.component';
-import { ViewAllOrderComponent } from './component/order/view-all-order/view-all-order.component';
 import { AddProductComponent } from './component/products/add-products/add-product.component';
 import { EditProductComponent } from './component/products/edit-products/edit-product.component';
 import { ViewAllProductComponent } from './component/products/view-all-product/view-all-product.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'add-products', component: AddProductComponent },
   { path: 'edit-products/:prodId/:count', component: EditProductComponent },
   { path: 'view-all-products', component: ViewAllProductComponent },
-  { path: 'view-all-orders', component: ViewAllOrderComponent },
   { path: 'customer-dashboard', component: CustomerDashboardComponent },
   { path: 'customer-view-product', component: CustomerViewProductComponent },
   { path: 'view-cart', component: ViewCartComponent },
