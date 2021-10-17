@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   getOrderById(orderId: number): Observable<Order> {
-    return this.http.get<Order>(`${orderURL}/${orderId}`);
+    return this.http.get<Order>(`${orderURL}/getOrderById/${orderId}`);
   }
 
   updateOrder(order: Order): Observable<Order> {
