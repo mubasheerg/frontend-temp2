@@ -16,6 +16,7 @@ import { AddStocksComponent } from './component/stocks/add-stocks/add-stocks.com
 import { ViewCartComponent } from './component/cart/view-cart/view-cart.component';
 import { ViewAllOrderComponent } from './component/admin/view-all-order/view-all-order.component';
 import { ViewCustomerOrderComponent } from './component/customer/view-customer-order/view-customer-order.component';
+import { CustomerDashboardComponent } from './component/customer/customer-dashboard/customer-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ViewCustomerOrderComponent } from './component/customer/view-customer-o
     ViewCartComponent,
     ViewAllOrderComponent,
     ViewCustomerOrderComponent,
+    CustomerDashboardComponent,
   ],
   imports: [
     BrowserModule,

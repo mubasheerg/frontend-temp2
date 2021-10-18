@@ -24,11 +24,11 @@ export class OrderService {
     return this.http.delete(`${orderURL}/${orderId}`);
   }
 
-  addOrders(order: Order): Observable<Order> {
+  addOrders(order: Order): Observable<any> {
     return this.http.post<Order>(orderURL, order, this.httpOptions);
   }
 
-  getOrderById(orderId: number): Observable<Order> {
+  getOrderById(orderId: number): Observable<any> {
     return this.http.get<Order>(`${orderURL}/getOrderById/${orderId}`);
   }
 

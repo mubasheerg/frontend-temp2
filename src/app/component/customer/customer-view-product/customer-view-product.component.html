@@ -26,7 +26,11 @@
             </button>
           </td>
           <td *ngIf="products != null">
-            <button type="button" class="btn btn-danger" (click)="buy()">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="buy(mymodal, p)"
+            >
               Buy
             </button>
           </td>
@@ -34,4 +38,67 @@
       </tbody>
     </table>
   </div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of orderedItems">
+          <td>{{ o.product.prodName }}</td>
+          <td>{{ o.product.prodPrice }}</td>
+          <td>{{ o.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+{{order|json}}
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Product Quantity</h4>
+
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <input
+      type="number"
+      placeholder="Enter the quantity"
+      name="quantity"
+      ngModel
+      #quantity="ngModel"
+      required
+    />
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="getQuantity(quantity.value) && modal.close('save link')"
+    >
+      Confirm
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-warning"
+      (click)="modal.dismiss('Dismiss click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>
