@@ -23,8 +23,12 @@ export class CustomerDashboardComponent implements OnInit {
     order.customer = customer;
     this.orderService.addOrders(order).subscribe((data) => {
       console.log(data);
-      localStorage.setItem('orderId',data);
+      localStorage.setItem('orderId', data);
     });
     this.router.navigate(['customer-view-product']);
+  }
+  onLogout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 }

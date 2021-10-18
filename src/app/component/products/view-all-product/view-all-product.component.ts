@@ -23,15 +23,18 @@ export class ViewAllProductComponent implements OnInit {
   tt: boolean = true;
   txtValue: any = null;
   public productIdList: Number[] = [];
-  public stockList:Stocks[]=[];
+  public stockList: Stocks[] = [];
   constructor(
     public productsService: ProductsService,
     public router: Router,
     public formBuiler: FormBuilder,
-    private stockService:StocksService
+    private stockService: StocksService
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('userId') == null) {
+      this.router.navigate(['login']);
+    }
     this.viewAllProducts();
     //this.getStocks();
     this.searchProductsForm = this.formBuiler.group({
@@ -43,15 +46,17 @@ export class ViewAllProductComponent implements OnInit {
     this.productsService.getAllProducts().subscribe((data: any[]) => {
       this.products = data;
       console.log(this.products);
-      for (var i=0;i<this.products.length;i++) {
-        console.log(this.products[i].prodId)
+      for (var i = 0; i < this.products.length; i++) {
+        console.log(this.products[i].prodId);
         this.productIdList.push(Number(this.products[i].prodId));
       }
       console.log(this.productIdList);
-      this.stockService.getStocksByProductId(this.productIdList).subscribe(response=>{
-        this.stockList=response;
-        console.log(this.stockList);
-      })
+      this.stockService
+        .getStocksByProductId(this.productIdList)
+        .subscribe((response) => {
+          this.stockList = response;
+          console.log(this.stockList);
+        });
     });
   }
 
@@ -129,7 +134,7 @@ export class ViewAllProductComponent implements OnInit {
     });
   }
 
-  editProducts(prodId: number,count:number) {
-    this.router.navigate(['edit-products', prodId,count]);
+  editProducts(prodId: number, count: number) {
+    this.router.navigate(['edit-products', prodId, count]);
   }
 }

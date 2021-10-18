@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Cart } from 'src/app/models/cart';
 import { Customer } from 'src/app/models/customer';
@@ -30,7 +31,8 @@ export class CustomerViewProductComponent implements OnInit {
     public productsService: ProductsService,
     private orderService: OrderService,
     private modalService: NgbModal,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {
     this.modalOptions = {
       backdrop: 'static',
@@ -39,6 +41,9 @@ export class CustomerViewProductComponent implements OnInit {
   }
   ngOnInit(): void {
     this.customerId = Number(localStorage.getItem('userId'));
+    if (this.customerId == null) {
+      this.router.navigate(['login']);
+    }
     console.log(this.customerId);
     this.productsService.getAllProducts().subscribe((data: any[]) => {
       this.products = data;
