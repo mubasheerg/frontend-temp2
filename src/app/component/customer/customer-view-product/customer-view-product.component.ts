@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { switchAll } from 'rxjs/operators';
 import { Cart } from 'src/app/models/cart';
 import { Customer } from 'src/app/models/customer';
 import { Order } from 'src/app/models/order';
 import { OrderItem } from 'src/app/models/orderItem';
 import { Products } from 'src/app/models/products';
+import { Stocks } from 'src/app/models/stocks';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderItemService } from 'src/app/services/order-item.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { StocksService } from 'src/app/services/stocks.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-customer-view-product',
@@ -21,6 +25,7 @@ export class CustomerViewProductComponent implements OnInit {
   quantity: number = 0;
   orderedItems: OrderItem[] = [];
   products: Products[] = [];
+  stock: Stocks = new Stocks();
   public errorMessage: string = '';
   public searches: string = '';
   public customerId: number = 0;
@@ -30,8 +35,8 @@ export class CustomerViewProductComponent implements OnInit {
     public orderItemService: OrderItemService,
     public productsService: ProductsService,
     private orderService: OrderService,
+    private stocksService: StocksService,
     private modalService: NgbModal,
-    private cartService: CartService,
     private router: Router
   ) {
     this.modalOptions = {
@@ -51,35 +56,37 @@ export class CustomerViewProductComponent implements OnInit {
     });
   }
 
-  addToCart(prod: Products) {
-    const cart: Cart = new Cart();
-    const customer: Customer = new Customer();
-    customer.custId = this.customerId;
-    const product: Products = new Products();
-    product.prodId = prod.prodId;
-    cart.customer = customer;
-    cart.product = product;
-    console.log(cart);
-    this.cartService.addCart(cart).subscribe((response) => {
-      window.alert(response);
-      console.log(response);
-    });
-  }
   buy(content: any, product: Products) {
     this.orderId = Number(localStorage.getItem('orderId'));
     this.modalService.open(content, this.modalOptions).result.then(
       () => {
-        const orderItem: OrderItem = new OrderItem();
-        orderItem.quantity = this.quantity;
-        const order: Order = new Order();
-        order.orderId = this.orderId;
-        orderItem.order = order;
-        orderItem.product = product;
-        this.orderItemService.addOrderItem(orderItem).subscribe((data) => {
-          this.getOrderedItems();
-          this.getOrderById();
-          console.log(data);
-        });
+        this.stocksService
+          .getCountByProdId(product.prodId)
+          .subscribe((data) => {
+            this.stock = data;
+            if (this.stock.count >= this.quantity) {
+              console.log('inside if');
+              const orderItem: OrderItem = new OrderItem();
+              orderItem.quantity = this.quantity;
+              const order: Order = new Order();
+              order.orderId = this.orderId;
+              orderItem.order = order;
+              orderItem.product = product;
+              this.orderItemService
+                .addOrderItem(orderItem)
+                .subscribe((data) => {
+                  this.getOrderedItems();
+                  this.getOrderById();
+                  console.log(data);
+                });
+            } else {
+              Swal.fire(
+                'Wrong',
+                'Entered quantity is greater than stocks',
+                'error'
+              );
+            }
+          });
       },
       (reason) => {}
     );
@@ -100,5 +107,8 @@ export class CustomerViewProductComponent implements OnInit {
       this.order = data;
       console.log(data);
     });
+  }
+  orderSuccess() {
+    Swal.fire('Success', 'Ordered Succesfully', 'success');
   }
 }

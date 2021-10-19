@@ -13,7 +13,6 @@
           <th>Product Price</th>
           <th>Category</th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -21,11 +20,6 @@
           <td>{{ p.prodName }}</td>
           <td>{{ p.prodPrice }}</td>
           <td>{{ p.category }}</td>
-          <td *ngIf="products != null">
-            <button type="button" class="btn btn-info" (click)="addToCart(p)">
-              Add To Cart
-            </button>
-          </td>
           <td *ngIf="products != null">
             <button
               type="button"
@@ -63,6 +57,9 @@
         </tr>
       </tfoot>
     </table>
+    <button class="btn btn-success" [disabled]="orderedItems.length <= 0" (click)=orderSuccess()>
+      Confirm
+    </button>
   </div>
 </div>
 
@@ -87,6 +84,8 @@
       name="quantity"
       ngModel
       #quantity="ngModel"
+      min="1"
+      [(ngModel)]="stock.count"
       required
     />
   </div>
