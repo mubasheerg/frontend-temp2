@@ -42,9 +42,15 @@ export class CustomerSignupComponent implements OnInit {
     customer.custPhone = this.signUpForm.get('custPhone').value;
     customer.custAddress = this.signUpForm.get('custAddress').value;
     console.log(customer);
-    this.customerService.addCustomer(customer).subscribe((response) => {
-      console.log(response);
-    });
+    this.customerService.addCustomer(customer).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        this.successNotification();
+        this.return();
+      }
+    );
   }
 
   return() {

@@ -1,1 +1,17 @@
-<p>view-all-order works!</p>
+<app-admin-dashboard></app-admin-dashboard>
+<table class="table table-bordered" style="margin-top: 49px;">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Ordered Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let vieworder of viewAllOrders">
+            <td>{{vieworder.customer.custName}}</td>
+            <td>{{vieworder.amount}}</td>
+            <td>{{vieworder.orderedOn | date: 'dd-MM-yyyy'}}</td>
+          </tr>
+    </tbody>
+</table>

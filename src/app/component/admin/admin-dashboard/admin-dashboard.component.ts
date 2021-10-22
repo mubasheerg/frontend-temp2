@@ -10,16 +10,4 @@ export class AdminDashboardComponent implements OnInit {
   constructor(public router: Router) {}
 
   ngOnInit(): void {}
-
-  viewAllProducts() {
-    this.router.navigate(['viewAllProducts']);
-  }
-
-  viewAllOrders() {
-    this.router.navigate(['viewAllOrders']);
-  }
-
-  viewAllStocks() {
-    this.router.navigate(['viewAllStocks']);
-  }
 }

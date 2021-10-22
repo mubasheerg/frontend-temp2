@@ -31,9 +31,9 @@ export class ViewAllProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (localStorage.getItem('userId') == null) {
-      this.router.navigate(['login']);
-    }
+    // if (localStorage.getItem('userId') == null) {
+    //   this.router.navigate(['login']);
+    // }
     this.viewAllProducts();
     this.searchProductsForm = this.formBuiler.group({
       prodId: ['', Validators.required],

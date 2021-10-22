@@ -17,7 +17,7 @@ export class OrderService {
   };
 
   getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${orderURL}`);
+    return this.http.get<Order[]>(`${orderURL}/getAllOrders`);
   }
 
   deleteOrders(orderId: number): Observable<Order> {

@@ -6,10 +6,7 @@
 
 <br /><br />
 
-<h3>
-  <font color="red"> &nbsp;&nbsp;&nbsp;{{ errorMessage }}</font>
-</h3>
-<div *ngIf="tt">
+<div>
   <div class="reglist">
     <table class="table table-striped">
       <thead>
@@ -19,7 +16,7 @@
           <th>Category</th>
           <th>Count</th>
           <th>Created Date</th>
-          <th>Edit</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -29,7 +26,7 @@
           <td>{{ p.category }}</td>
           <td>{{ stockList[i].count }}</td>
           <td>{{ p.prodAddedOn | date }}</td>
-          <td *ngIf="products != null">
+          <td>
             <button
               type="button"
               class="btn btn-info"
