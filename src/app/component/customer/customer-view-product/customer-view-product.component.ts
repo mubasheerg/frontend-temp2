@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { switchAll } from 'rxjs/operators';
-import { Cart } from 'src/app/models/cart';
-import { Customer } from 'src/app/models/customer';
 import { Order } from 'src/app/models/order';
 import { OrderItem } from 'src/app/models/orderItem';
 import { Products } from 'src/app/models/products';
 import { Stocks } from 'src/app/models/stocks';
-import { CartService } from 'src/app/services/cart.service';
 import { OrderItemService } from 'src/app/services/order-item.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductsService } from 'src/app/services/products.service';
