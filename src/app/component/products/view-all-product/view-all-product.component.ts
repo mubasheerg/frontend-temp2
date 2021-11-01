@@ -17,7 +17,6 @@ export class ViewAllProductComponent implements OnInit {
   show?: boolean;
   searchProductsForm?: FormGroup;
   prodId?: number;
-  count!: number;
   public productIdList: Number[] = [];
   public stockList: Stocks[] = [];
   constructor(
