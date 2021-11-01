@@ -5,6 +5,7 @@ import { Products } from 'src/app/models/products';
 import { Stocks } from 'src/app/models/stocks';
 import { ProductsService } from 'src/app/services/products.service';
 import { StocksService } from 'src/app/services/stocks.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-stocks',
@@ -34,12 +35,13 @@ export class AddStocksComponent implements OnInit {
     stock.count = this.stock.value;
     const product: Products = new Products();
     product.prodId = this.product.value.split('-').shift();
-    console.log(product);
     stock.product = product;
-    console.log(stock);
-    this.stockService.addStocks(stock).subscribe((response) => {
-      console.log(response);
-    });
+    this.stockService.addStocks(stock).subscribe(
+      (response) => {},
+      (error) => {
+        this.successNotification();
+      }
+    );
     this.router.navigate(['view-all-products']);
   }
   get product() {
@@ -47,5 +49,8 @@ export class AddStocksComponent implements OnInit {
   }
   get stock() {
     return this.AddStockForm.get('stock');
+  }
+  successNotification() {
+    Swal.fire('Success', 'Stocks added successfully', 'success');
   }
 }

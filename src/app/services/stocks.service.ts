@@ -27,6 +27,9 @@ export class StocksService {
   addStocks(stocks: Stocks): Observable<Stocks> {
     return this.http.post<Stocks>(stocksURL, stocks, this.httpOptions);
   }
+  getStocksByProductId(productList: Number[]): Observable<any> {
+    return this.http.post(`${stocksURL}/count`, productList);
+  }
 
   updateStocks(stocks: Stocks): Observable<Stocks> {
     return this.http.put<Stocks>(
@@ -39,10 +42,7 @@ export class StocksService {
   getStocksById(stockId: number): Observable<Stocks> {
     return this.http.get<Stocks>(`${stocksURL}/getStocksById/${stockId}`);
   }
-  getStocksByProductId(productList: Number[]): Observable<any> {
-    return this.http.post(`${stocksURL}/count`, productList);
-  }
-
+  
   getCountByProdId(prodId: number): Observable<any> {
     return this.http.get(`${stocksURL}/count/${prodId}`);
   }

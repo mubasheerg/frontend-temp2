@@ -13,14 +13,11 @@ import { StocksService } from 'src/app/services/stocks.service';
 })
 export class ViewAllProductComponent implements OnInit {
   errorMessage?: string;
-  public products: Products[] = [];
+  products: Products[] = [];
   show?: boolean;
   searchProductsForm?: FormGroup;
   prodId?: number;
-  searchProductId: boolean = false;
-  searches?: any;
-  tt: boolean = true;
-  txtValue: any = null;
+  count!: number;
   public productIdList: Number[] = [];
   public stockList: Stocks[] = [];
   constructor(
@@ -31,9 +28,6 @@ export class ViewAllProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // if (localStorage.getItem('userId') == null) {
-    //   this.router.navigate(['login']);
-    // }
     this.viewAllProducts();
     this.searchProductsForm = this.formBuiler.group({
       prodId: ['', Validators.required],

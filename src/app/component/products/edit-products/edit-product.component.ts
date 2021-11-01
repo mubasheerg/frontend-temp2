@@ -46,10 +46,13 @@ export class EditProductComponent implements OnInit {
     });
   }
   updateProducts() {
-    this.productsService.updateProducts(this.product).subscribe((data) => {
-      console.log(data);
-      this.successNotification();
-    });
+    this.productsService.updateProducts(this.product).subscribe(
+      (data) => {},
+      (error) => {
+        this.successNotification();
+        this.router.navigate(['view-all-products']);
+      }
+    );
     this.stockService.updateStocks(this.stock).subscribe((data) => {
       console.log(data);
     });
@@ -64,6 +67,6 @@ export class EditProductComponent implements OnInit {
   }
 
   successNotification() {
-    Swal.fire('Success', 'Product updated successfully', 'success');
+    Swal.fire('Success', 'Updated successfully', 'success');
   }
 }

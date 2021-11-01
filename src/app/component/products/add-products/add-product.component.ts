@@ -39,7 +39,6 @@ export class AddProductComponent implements OnInit {
     this.productService.addProducts(this.addProductForm?.value).subscribe(
       (res) => {
         console.log(res);
-        console.log('Product added successfully');
       },
       (error) => {
         this.successNotification();
@@ -52,6 +51,6 @@ export class AddProductComponent implements OnInit {
     Swal.fire('Success', 'Product Added Successfully', 'success');
   }
   back() {
-    this.router.navigate(['view-all-products']);
+    this.router.navigate(['admin-dashboard']);
   }
 }

@@ -5,20 +5,16 @@ import { OrderService } from 'src/app/services/order.service';
 @Component({
   selector: 'app-view-all-order',
   templateUrl: './view-all-order.component.html',
-  styleUrls: ['./view-all-order.component.css']
+  styleUrls: ['./view-all-order.component.css'],
 })
 export class ViewAllOrderComponent implements OnInit {
+  viewAllOrders: Order[] = [];
 
-  viewAllOrders:Order[]=[];
-
-  constructor(private orderService:OrderService) { }
+  constructor(private orderService: OrderService) {}
 
   ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe((response)=>{
-      this.viewAllOrders=response;
-      console.log(this.viewAllOrders+" "+response);
+    this.orderService.getAllOrders().subscribe((response) => {
+      this.viewAllOrders = response;
     });
-
   }
-
 }
