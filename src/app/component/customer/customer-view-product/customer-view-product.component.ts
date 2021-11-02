@@ -106,5 +106,6 @@ export class CustomerViewProductComponent implements OnInit {
   }
   orderSuccess() {
     Swal.fire('Success', 'Ordered Succesfully', 'success');
+    this.router.navigate(['customer-dashboard']);
   }
 }
