@@ -16,6 +16,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./customer-signup.component.css'],
 })
 export class CustomerSignupComponent implements OnInit {
+  customer?: Customer;
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public customerService: CustomerService,
@@ -41,15 +43,13 @@ export class CustomerSignupComponent implements OnInit {
     customer.custPwd = this.signUpForm.get('custPwd').value;
     customer.custPhone = this.signUpForm.get('custPhone').value;
     customer.custAddress = this.signUpForm.get('custAddress').value;
-    console.log(customer);
     this.customerService.addCustomer(customer).subscribe(
       (response) => {
-        console.log(response);
-      },
-      (error) => {
+        this.customer = response;
         this.successNotification();
         this.return();
-      }
+      },
+      (error) => {}
     );
   }
 
@@ -62,17 +62,17 @@ export class CustomerSignupComponent implements OnInit {
   }
 }
 
-function ConfirmedValidator(controlName: string, matchingControlName: string) {
-  return (formGroup: FormGroup) => {
-    const control = formGroup.controls[controlName];
-    const matchingControl = formGroup.controls[matchingControlName];
-    if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
-      return;
-    }
-    if (control.value !== matchingControl.value) {
-      matchingControl.setErrors({ confirmedValidator: true });
-    } else {
-      matchingControl.setErrors(null);
-    }
-  };
-}
+// function ConfirmedValidator(controlName: string, matchingControlName: string) {
+//   return (formGroup: FormGroup) => {
+//     const control = formGroup.controls[controlName];
+//     const matchingControl = formGroup.controls[matchingControlName];
+//     if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+//       return;
+//     }
+//     if (control.value !== matchingControl.value) {
+//       matchingControl.setErrors({ confirmedValidator: true });
+//     } else {
+//       matchingControl.setErrors(null);
+//     }
+//   };
+// }

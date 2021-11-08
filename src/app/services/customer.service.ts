@@ -16,23 +16,23 @@ export class CustomerService {
     }),
   };
 
-  getCustomerById(custId: number): Observable<Customer> {
+  getCustomerById(custId: number): Observable<any> {
     return this.http.get<Customer>(`${customerURL}/${custId}`);
   }
 
-  getCustomerByMail(custMail: string): Observable<Customer> {
+  getCustomerByMail(custMail: string): Observable<any> {
     return this.http.get<Customer>(
       `${customerURL}/getCustomerByMail/${custMail}`
     );
   }
 
-  getCustomerByPhoneNo(custPhone: string): Observable<Customer> {
+  getCustomerByPhoneNo(custPhone: string): Observable<any> {
     return this.http.get<Customer>(
       `${customerURL}/getCustomerByPhoneNo/${custPhone}`
     );
   }
 
-  getCustomerByName(custName: string): Observable<Customer> {
+  getCustomerByName(custName: string): Observable<any> {
     return this.http.get<Customer>(
       `${customerURL}/getCustomerByName/${custName}`
     );
@@ -42,26 +42,26 @@ export class CustomerService {
     return this.http.get<Customer[]>(`${customerURL}`);
   }
 
-  deleteCustomer(custId: number): Observable<Customer> {
+  deleteCustomer(custId: number): Observable<any> {
     return this.http.delete(`${customerURL}/${custId}`);
   }
 
-  addCustomer(customer: Customer): Observable<Customer> {
+  addCustomer(customer: Customer): Observable<any> {
     return this.http.post<Customer>(customerURL, customer, this.httpOptions);
   }
 
-  updateCustomer(customer: Customer): Observable<Customer> {
+  updateCustomer(customer: Customer): Observable<any> {
     return this.http.put<Customer>(customerURL, customer);
   }
 
-  forgotPassword(custMail: string): Observable<Customer> {
+  forgotPassword(custMail: string): Observable<any> {
     return this.http.put<Customer>(
       `${customerURL}/forgotpassword/${custMail}`,
       this.httpOptions
     );
   }
 
-  customerLogin(custMail: string, custPwd: String): Observable<Customer> {
+  customerLogin(custMail: string, custPwd: String): Observable<any> {
     return this.http.get<Customer>(
       `${customerURL}/customerLogin/${custMail}/${custPwd}`
     );

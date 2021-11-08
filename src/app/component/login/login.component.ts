@@ -34,12 +34,12 @@ export class LoginComponent implements OnInit {
       .getCustomerByMail(login.username)
       .subscribe((response) => {
         console.log(response);
-        this.customer = response;
+        this.customer = response.data;
         console.log(this.customer);
         console.log(login.password);
         if (login.password == this.customer.custPwd) {
           this.successNotification();
-          localStorage.setItem('userId',String(this.customer.custId));
+          localStorage.setItem('userId', String(this.customer.custId));
           this.router.navigate(['customer-dashboard']);
         } else {
           this.WrongLoginNotification();
