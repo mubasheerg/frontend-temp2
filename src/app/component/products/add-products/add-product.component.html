@@ -9,55 +9,36 @@
     <fieldset>
       <div class="form-group">
         <label>Product Name:</label>
-        <input type="text" class="form-control" formControlName="prodName" />
-        <div
-          class="alert alert-danger"
-          *ngIf="
-            addProductForm.get('prodName').hasError('required') &&
-            addProductForm.get('prodName').dirty
-          "
-        >
-          Product Name is required
-        </div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="prodName"
+          minlength="3"
+          required
+        />
       </div>
       <br />
 
       <div class="form-group">
         <label>Price:</label>
-        <input type="number" class="form-control" formControlName="prodPrice" />
-        <div
-          class="alert alert-danger"
-          *ngIf="
-            addProductForm.get('prodPrice').hasError('required') &&
-            addProductForm.get('prodPrice').dirty
-          "
-        >
-          Price is required
-        </div>
-        <div
-          class="alert alert-danger"
-          *ngIf="
-            addProductForm.get('prodPrice').hasError('isnegative') &&
-            addProductForm.get('prodPrice').dirty
-          "
-        >
-          Price should not be neagtive
-        </div>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="prodPrice"
+          required
+        />
       </div>
       <br />
 
       <div class="form-group">
         <label>Category:</label>
-        <input type="text" class="form-control" formControlName="category" />
-        <div
-          class="alert alert-danger"
-          *ngIf="
-            addProductForm.get('category').hasError('required') &&
-            addProductForm.get('category').dirty
-          "
-        >
-          Category is required
-        </div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="category"
+          minlength="3"
+          required
+        />
       </div>
       <br />
 
