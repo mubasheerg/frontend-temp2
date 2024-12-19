@@ -1,0 +1,123 @@
+<app-customer-dashboard></app-customer-dashboard>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div>
+  <div class="reglist">
+    <table class="table table-striped" style="margin-top: 57px">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products">
+          <td>{{ p.prodName }}</td>
+          <td>{{ p.prodPrice }}</td>
+          <td>{{ p.category }}</td>
+          <td *ngIf="products != null">
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="buy(mymodal, p)"
+            >
+              Buy
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of orderedItems">
+          <td>{{ o.product.prodName }}</td>
+          <td>{{ o.product.prodPrice }}</td>
+          <td>{{ o.quantity }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td><b>Total Price</b></td>
+          <td>{{ order.amount }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <button
+      class="btn btn-success"
+      [disabled]="orderedItems.length <= 0"
+      (click)="orderSuccess()"
+    >
+      Confirm
+    </button>
+  </div>
+</div>
+
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Product Quantity</h4>
+
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <input
+      type="number"
+      placeholder="Enter the quantity"
+      name="quantity"
+      ngModel
+      #quantity="ngModel"
+      min="1"
+      [(ngModel)]="stock.count"
+      required
+    />
+    <div class="text-danger">
+      <small *ngIf="quantity.touched && quantity.errors?.required"
+        >Quantity is required</small
+      >
+      <small *ngIf="quantity.invalid && quantity.errors?.min"
+        >Quantity must be greater than 0</small
+      >
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="getQuantity(quantity.value) && modal.close('save link')"
+      [disabled]="quantity.value <= 0"
+    >
+      Confirm
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-warning"
+      (click)="modal.dismiss('Dismiss click')"
+    >
+      Cancel
+    </button>
+  </div>
+</ng-template>

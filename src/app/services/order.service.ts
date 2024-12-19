@@ -1,0 +1,38 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { Order } from '../models/order';
+
+const orderURL = 'http://localhost:9001/order';
+@Injectable({
+  providedIn: 'root',
+})
+export class OrderService {
+  constructor(public http: HttpClient) {}
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  getAllOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${orderURL}/getAllOrders`);
+  }
+
+  deleteOrders(orderId: number): Observable<Order> {
+    return this.http.delete(`${orderURL}/${orderId}`);
+  }
+
+  addOrders(order: Order): Observable<any> {
+    return this.http.post<Order>(orderURL, order, this.httpOptions);
+  }
+
+  getOrderById(orderId: number): Observable<any> {
+    return this.http.get<Order>(`${orderURL}/getOrderById/${orderId}`);
+  }
+
+  updateOrder(order: Order): Observable<Order> {
+    return this.http.put<Order>(orderURL, order, this.httpOptions);
+  }
+}

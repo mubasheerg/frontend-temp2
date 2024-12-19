@@ -1,0 +1,60 @@
+<app-admin-dashboard></app-admin-dashboard>
+<div class="reglist">
+  <form
+    novalidate
+    [formGroup]="addProductForm"
+    style="margin-top: 50px; margin-left: 550px; width: 340px"
+    (ngSubmit)="addProducts()"
+  >
+    <fieldset>
+      <div class="form-group">
+        <label>Product Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="prodName"
+          minlength="3"
+          required
+        />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label>Price:</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="prodPrice"
+          required
+        />
+      </div>
+      <br />
+
+      <div class="form-group">
+        <label>Category:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="category"
+          minlength="3"
+          required
+        />
+      </div>
+      <br />
+
+      <td>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="addProductForm.invalid"
+          style="margin-left: 30px"
+        >
+          Add Product</button
+        >&nbsp;&nbsp;
+        <button class="btn btn-success" type="reset">Clear</button>&nbsp;&nbsp;
+        <button class="btn btn-info" (click)="back()">Back</button>&nbsp;&nbsp;
+      </td>
+      <br /><br />
+    </fieldset>
+  </form>
+</div>

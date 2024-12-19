@@ -1,0 +1,42 @@
+<app-admin-dashboard></app-admin-dashboard>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<br /><br />
+
+<div>
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Category</th>
+          <th>Count</th>
+          <th>Created Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of products; let i = index">
+          <td>{{ p.prodName }}</td>
+          <td>{{ p.prodPrice }}</td>
+          <td>{{ p.category }}</td>
+          <td>{{ stockList[i].count }}</td>
+          <td>{{ p.prodAddedOn | date }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              (click)="editProducts(p.prodId, stockList[i].stockId)"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

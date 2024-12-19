@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
+  <a class="navbar-brand" href="/admin-dashboard">Shop Management System</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="/view-all-order">View Orders</a>
+      </li>
+      <li ngbDropdown class="nav-item dropdown">
+        <a
+          ngbDropdownToggle
+          class="nav-link active dropdown-toggle"
+          id="dropdown01"
+          role="button"
+          aria-haspopup="true"
+          aria-expanded="false"
+          >Products</a
+        >
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item" routerLink="/add-products">Add Products</a>
+          <a class="dropdown-item" routerLink="/view-all-products"
+            >View All Products</a
+          >
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <button type="button" class="btn btn-success" routerLink="/login">
+      Log out
+    </button>
+  </div>
+</nav>
